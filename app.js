@@ -53,31 +53,7 @@ let books = [
     book ? res.send(book) : res.status(404).send({ error: "NOTFOUND" });
  });
 
- /**
- * delete route | delete book
- */
- app.delete("/delete/:id", (req, res) => {
-    books = books.filter((b) => b.id !== parseInt(req.params.id));
-    res.send({ message: "Success" });
- });
-
- /**
-  * put route | update book by id
-  */
- app.put('/update/:id', (req, res) => {
-    const bookIndex = books.findIndex(
-        (b) => b.id === parseInt(req.params.id)
-      );
-      if(bookIndex != -1){
-          books[bookIndex] = {
-             ...books[bookIndex],
-             ...req.body,
-          };
-          res.send(books[bookIndex]);
-      }else{
-        res.status(404).send({ error: "NOTFOUND" });
-      }
- });
+ 
 
 /**
  * post route | add new book
